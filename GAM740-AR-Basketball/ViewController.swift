@@ -24,44 +24,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let scene = SCNScene()
         
-        let ball = SCNSphere(radius: 0.5)
-        let ballMaterial = SCNMaterial()
-        
-        ballMaterial.diffuse.contents = UIColor.purple
-        ball.materials = [ballMaterial]
-        
-        let ballNode = SCNNode(geometry: ball)
-        ballNode.position = SCNVector3(x: -1, y: 0, z:1)
-        
-        let box = SCNBox(width: 0.3, height: 0.3, length: 0.3, chamferRadius: 0)
-        let boxMaterial = SCNMaterial()
-        
-        boxMaterial.diffuse.contents = UIColor.blue
-        box.materials = [boxMaterial]
-        
-        let boxNode = SCNNode(geometry: box)
-        boxNode.position = SCNVector3(x: -0.25, y: 0, z: 0.25)
-        
-        let text = SCNText(string:"GAM740", extrusionDepth: 1)
-        let textMaterial = SCNMaterial()
-        
-        textMaterial.diffuse.contents = UIColor.red
-        
-        text.materials = [textMaterial]
-        
-        let textNode = SCNNode(geometry: text)
-        textNode.position = SCNVector3(x: 1, y: 0, z: -0.5)
-        
-        
-        // // // //
-        
-        scene.rootNode.addChildNode(ballNode)
-        scene.rootNode.addChildNode(boxNode)
-        scene.rootNode.addChildNode(textNode)
-        
         // Set the scene to the view
         sceneView.scene = scene
+        
+        addBackboard()
     }
+    
+    func addBackboard() {
+        guard let backboardScene = SCNScene(named: "art.scnassets/hoop.scn") else {
+            return
+        }
+        
+        guard let backboardNode = backboardScene.rootNode.childNode(withName: "backboard", recursively: false) else {
+            return
+        }
+        
+        backboardNode.position = SCNVector3(x: 0, y: 0.5, z: -3)
+        
+        sceneView.scene.rootNode.addChildNode(backboardNode)
+        
+    }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
