@@ -24,18 +24,40 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let scene = SCNScene()
         
-        let cube = SCNBox(width: 0.2, height: 0.2, length: 0.2, chamferRadius: 0.05)
-        let cubeMaterial = SCNMaterial()
+        let ball = SCNSphere(radius: 0.5)
+        let ballMaterial = SCNMaterial()
         
-        cubeMaterial.diffuse.contents = UIColor.red
+        ballMaterial.diffuse.contents = UIColor.purple
+        ball.materials = [ballMaterial]
         
-        cube.materials = [cubeMaterial]
+        let ballNode = SCNNode(geometry: ball)
+        ballNode.position = SCNVector3(x: -1, y: 0, z:1)
         
-        let cubeNode = SCNNode(geometry: cube)
+        let box = SCNBox(width: 0.3, height: 0.3, length: 0.3, chamferRadius: 0)
+        let boxMaterial = SCNMaterial()
         
-        cubeNode.position = SCNVector3(x: 0, y: 0.2, z: 1)
+        boxMaterial.diffuse.contents = UIColor.blue
+        box.materials = [boxMaterial]
         
-        scene.rootNode.addChildNode(cubeNode)
+        let boxNode = SCNNode(geometry: box)
+        boxNode.position = SCNVector3(x: -0.25, y: 0, z: 0.25)
+        
+        let text = SCNText(string:"GAM740", extrusionDepth: 1)
+        let textMaterial = SCNMaterial()
+        
+        textMaterial.diffuse.contents = UIColor.red
+        
+        text.materials = [textMaterial]
+        
+        let textNode = SCNNode(geometry: text)
+        textNode.position = SCNVector3(x: 1, y: 0, z: -0.5)
+        
+        
+        // // // //
+        
+        scene.rootNode.addChildNode(ballNode)
+        scene.rootNode.addChildNode(boxNode)
+        scene.rootNode.addChildNode(textNode)
         
         // Set the scene to the view
         sceneView.scene = scene
