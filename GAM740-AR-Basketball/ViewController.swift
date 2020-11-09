@@ -92,6 +92,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         backboardNode.position = SCNVector3(x: 0, y: 0.5, z: -3)
         
+        let physicsShape = SCNPhysicsShape(node: backboardNode, options: [SCNPhysicsShape.Option.type: SCNPhysicsShape.ShapeType.concavePolyhedron])
+        let physicsBody = SCNPhysicsBody(type: .static, shape: physicsShape)
+        
+        backboardNode.physicsBody = physicsBody
+        
         sceneView.scene.rootNode.addChildNode(backboardNode)
         
     }
