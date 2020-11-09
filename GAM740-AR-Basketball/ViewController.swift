@@ -53,10 +53,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let cameraTransform = centerPoint.transform
         let cameraLocation = SCNVector3(x: cameraTransform.m41, y: cameraTransform.m42, z: cameraTransform.m43)
-        let cameraOrientation = SCNVector3(x: cameraTransform.m31, y: cameraTransform.m32, z: cameraTransform.m33)
+        let cameraOrientation = SCNVector3(x: -cameraTransform.m31, y: -cameraTransform.m32, z: -cameraTransform.m33)
         let cameraPosition = SCNVector3Make(cameraLocation.x + cameraOrientation.x, cameraLocation.y + cameraOrientation.y, cameraLocation.z + cameraOrientation.z)
         
+        // BasketBall Yay!
         
+        let ball = SCNSphere(radius: 0.15)
+        let ballMaterial = SCNMaterial()
+        ballMaterial.diffuse.contents = UIImage(named: "basketballSkin.png")
+        
+        ball.materials = [ballMaterial]
+        
+        let ballNode = SCNNode(geometry: ball)
+        ballNode.position = cameraPosition
+        
+        sceneView.scene.rootNode.addChildNode(ballNode)
     }
     
     func addBackboard() {
