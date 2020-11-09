@@ -28,6 +28,35 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene = scene
         
         addBackboard()
+        
+        registerGestureRecognizer()
+    }
+    
+    func registerGestureRecognizer(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        sceneView.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
+        print("does this work?")
+        
+        guard let sceneView = gestureRecognizer.view as? ARSCNView else {
+            return
+        }
+        
+        guard let centerPoint = sceneView.pointOfView else {
+            return
+        }
+        
+        // transform matrix
+        // I need to learn more about matrices!
+        
+        let cameraTransform = centerPoint.transform
+        let cameraLocation = SCNVector3(x: cameraTransform.m41, y: cameraTransform.m42, z: cameraTransform.m43)
+        let cameraOrientation = SCNVector3(x: cameraTransform.m31, y: cameraTransform.m32, z: cameraTransform.m33)
+        let cameraPosition = SCNVector3Make(cameraLocation.x + cameraOrientation.x, cameraLocation.y + cameraOrientation.y, cameraLocation.z + cameraOrientation.z)
+        
+        
     }
     
     func addBackboard() {
