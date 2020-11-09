@@ -67,6 +67,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let ballNode = SCNNode(geometry: ball)
         ballNode.position = cameraPosition
         
+        //physics yay
+        let physicsShape = SCNPhysicsShape(node: ballNode, options: nil)
+        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: physicsShape)
+        
+        ballNode.physicsBody = physicsBody
+        
+        
+        let forceVector:Float = 6
+        
+        ballNode.physicsBody?.applyForce(SCNVector3(x: cameraPosition.x * forceVector, y: cameraPosition.y * forceVector, z: cameraPosition.z * forceVector), asImpulse: true)
+        
         sceneView.scene.rootNode.addChildNode(ballNode)
     }
     
