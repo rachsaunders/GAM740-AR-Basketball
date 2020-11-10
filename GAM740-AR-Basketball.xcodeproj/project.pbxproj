@@ -15,6 +15,7 @@
 		18CECEB82558410B000E0CD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18CECEB62558410B000E0CD4 /* LaunchScreen.storyboard */; };
 		18CECEC32558410B000E0CD4 /* GAM740_AR_BasketballTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CECEC22558410B000E0CD4 /* GAM740_AR_BasketballTests.swift */; };
 		18CECECE2558410B000E0CD4 /* GAM740_AR_BasketballUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CECECD2558410B000E0CD4 /* GAM740_AR_BasketballUITests.swift */; };
+		18FDB19A255AF90E00E9B403 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FDB199255AF90E00E9B403 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		18CECEC92558410B000E0CD4 /* GAM740-AR-BasketballUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GAM740-AR-BasketballUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CECECD2558410B000E0CD4 /* GAM740_AR_BasketballUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAM740_AR_BasketballUITests.swift; sourceTree = "<group>"; };
 		18CECECF2558410B000E0CD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18FDB199255AF90E00E9B403 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				18CECEB42558410B000E0CD4 /* Assets.xcassets */,
 				18CECEB62558410B000E0CD4 /* LaunchScreen.storyboard */,
 				18CECEB92558410B000E0CD4 /* Info.plist */,
+				18FDB199255AF90E00E9B403 /* CustomButton.swift */,
 			);
 			path = "GAM740-AR-Basketball";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				18CECEB02558410A000E0CD4 /* ViewController.swift in Sources */,
 				18CECEAC2558410A000E0CD4 /* AppDelegate.swift in Sources */,
+				18FDB19A255AF90E00E9B403 /* CustomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

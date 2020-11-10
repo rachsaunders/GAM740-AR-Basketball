@@ -13,6 +13,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    @IBOutlet weak var addHoopButton: UIButton!
+    
+    
+    var currentNode: SCNNode!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,8 +31,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
-        
-        addBackboard()
         
         registerGestureRecognizer()
     }
@@ -100,7 +103,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.scene.rootNode.addChildNode(backboardNode)
         
-        roundAction(node: backboardNode)
+       
+        
+        currentNode = backboardNode
         
     }
     
@@ -110,7 +115,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let actionSequence = SCNAction.sequence([leftAction, rightAction])
         
-        node.runAction(SCNAction.repeat(actionSequence, count: 2))
+        node.runAction(SCNAction.repeat(actionSequence, count: 4))
     }
     
     
@@ -122,7 +127,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let actionSequence = SCNAction.sequence([upRight, downRight, downLeft, upLeft])
         
-        node.runAction(SCNAction.repeat(actionSequence, count: 2))
+        node.runAction(SCNAction.repeat(actionSequence, count: 3))
         
     }
     
@@ -170,4 +175,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+    
+    
+    
+    @IBAction func startRoundAction(_ sender: Any) {
+        roundAction(node: currentNode)
+    }
+    
+    
+    @IBAction func stopAllAction(_ sender: Any) {
+        currentNode.removeAllActions()
+    }
+    
+    
+    @IBAction func startHorizontalAction(_ sender: Any) {
+        horizontalAction(node: currentNode)
+    }
+    
+    
+    @IBAction func addHoopButton(_ sender: Any) {
+        addBackboard()
+        addHoopButton.isHidden = true
+    }
+    
+    
 }
